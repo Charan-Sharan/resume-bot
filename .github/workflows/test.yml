@@ -1,0 +1,45 @@
+name: Test Resume
+
+on:
+  push:
+    paths:
+      - 'resume.tex'
+  pull_request:
+    paths:
+      - 'resume.tex'
+
+jobs:
+  spellcheck:
+    runs-on: ubuntu-latest
+    name: Spell Check and Validate links
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install aspell
+        run: sudo apt-get update && sudo apt-get install -y aspell
+
+      - name: Spell Check Resume
+        run: |
+            aspell --mode=tex --home-dir=. --personal=resume_dict.txt list < resume.tex > misspelled_words.txt
+            if [ -s misspelled_words.txt ]; then
+                echo -e "\e[31mSpelling mistakes found!\e[0m"
+                cat misspelled_words.txt
+                exit 1
+            else
+                echo -e "\e[32mNo spelling mistakes.\e[0m"
+            fi
+
+      - name: validate links
+        run: | 
+            grep -o "https://[^}]*" resume.tex > links.txt
+            for LINK in $(cat links.txt); do
+                    HTTP_RESPONSE_CODE=$( curl -s -o /dev/null -w "%{http_code}" $LINK )
+                    if [ $HTTP_RESPONSE_CODE -eq 404 ]; then
+                        echo $LINK >> broken_links.txt
+                    fi
+            done
+            if [ -s broken_links.txt ]; then
+                echo -e "\e[031mBroken links found!\e[0m"
+                cat broken_links.txt
+            fi
