@@ -9,6 +9,7 @@ jobs:
     build:
           name: build resume
           runs-on: Ubuntu-latest
+          if: ${{ github.event.workflow_run.conclusion == 'success' }}
           steps:
             - name: Set up Python
               uses: actions/setup-python@v5
@@ -51,5 +52,5 @@ jobs:
                     return True
 
                 upload_file('resume.pdf','charan-resume-bucket','charan_resume.pdf')
-
+              shell: python
                 
