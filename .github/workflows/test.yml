@@ -1,9 +1,9 @@
 name: Test Resume
 
 on:
-  push:
-    paths:
-      - 'resume.tex'
+  # push:
+  #   paths:
+  #     - 'resume.tex'
   pull_request:
     paths:
       - 'resume.tex'
