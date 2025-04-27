@@ -56,4 +56,13 @@ jobs:
 
                 upload_file('resume.pdf','charan-resume-bucket','charan_resume.pdf')
               shell: python
-                
+            
+            - name: send mail
+              uses: dawidd6/action-send-mail@v5
+              with:
+                connection_url: ${{ secrets.MAIL_CONNECTION_URL }}
+                subject: Resume Build Successful
+                to: ${{ secrets.RECEIVER_MAIL_ADDRESS }}
+                from: ${{ secrets.MAIL_USERNAME }}
+                body: Build job of ${{github.repository}} completed successfully! 
+                attachments: resume.pdf                
