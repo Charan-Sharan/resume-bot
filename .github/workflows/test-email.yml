@@ -1,0 +1,23 @@
+name: test email
+
+on: 
+    push:
+    # workflow_run:
+    #     workflows: ["Test Resume"]
+    #     types:
+    #         - completed
+jobs:
+    build:
+          name: test email
+          runs-on: Ubuntu-latest
+          steps:
+            - name: send mail
+              uses: dawidd6/action-send-mail@v5
+              with:
+                connection_url: ${{ secrets.MAIL_CONNECTION_URL }}
+                subject: Resume Build Successful
+                to: ${{ secrets.RECEIVER_MAIL_ADDRESS }}
+                from: ${{ secrets.MAIL_USERNAME }}
+                body: Build job of ${{github.repository}} completed successfully!
+                html_body: "<h1>Resumme Build Sucessfull</h1><h2>Time: ${{ github.event.head_commit.timestamp }}</h2><br>Acess Resume <a href=${{secrets.RESUME_URL}}>Here</a>"
+                attachments: resume.pdf  
