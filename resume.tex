@@ -3,10 +3,10 @@
 % Packages:
 \usepackage[
     ignoreheadfoot, % set margins without considering header and footer
-    top=2 cm, % seperation between body and page edge from the top
-    bottom=2 cm, % seperation between body and page edge from the bottom
-    left=2 cm, % seperation between body and page edge from the left
-    right=2 cm, % seperation between body and page edge from the right
+    top=1.5 cm, % seperation between body and page edge from the top
+    bottom=1.5 cm, % seperation between body and page edge from the bottom
+    left=1.75 cm, % seperation between body and page edge from the left
+    right=1.75 cm, % seperation between body and page edge from the right
     footskip=1.0 cm, % seperation between body and footer
     % showframe % for debugging 
 ]{geometry} % for adjusting page geometry
@@ -244,6 +244,7 @@
     \section{Projects}
 
         \begin{twocolentry}{
+            % \href{https://github.com/Charan-Sharan/resume-as-code}{link}
         }
             \textbf{Private Cloud Cluster Setup on Raspberry Pi}\end{twocolentry}
 
@@ -262,6 +263,7 @@
         \vspace{0.2 cm}
 
         \begin{twocolentry}{
+        \href{https://github.com/Charan-Sharan/CRUD}{link} | \href{https://github.com/Charan-Sharan/gitops}{link}
         }
             \textbf{GitOps CI/CD Pipeline Automation}\end{twocolentry}
 
@@ -271,7 +273,6 @@
                 \item Implemented CI pipeline using GitHub Actions to automate testing, Docker image building, and pushing images to Docker Hub.
                 \item Configured Kubernetes manifests for application deployment.
                 \item ArgoCD was deployed to monitor the GitHub repository for manifest changes, enabling automated Kubernetes updates.
-                \item Link to my work: \href{https://github.com/Charan-Sharan/CRUD}{Development repository} | \href{https://github.com/Charan-Sharan/gitops}{GitOps repository}
             \end{highlights}
         \end{onecolentry}
 
@@ -279,7 +280,24 @@
         \vspace{0.2 cm}
 
         \begin{twocolentry}{
-            
+            \href{https://github.com/Charan-Sharan/resume-as-code}{link}
+        }
+            \textbf{Resume as Code}\end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \text{Automated LaTeX Resume Pipeline using Terraform, GitHub Actions \& AWS} 
+            \begin{highlights}
+                \item Designed a CI/CD pipeline to test, build and deploy my resume to S3 bucket.
+                \item provisioned the infrastructure(S3 and IAM) using terraform.
+                \item Integrated spell-checking, link validation, and automated build triggers on pull requests.
+                % \item 
+            \end{highlights}
+        \end{onecolentry}
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{
+            \href{https://github.com/Charan-Sharan/LinuxSecurityHardening}{link}
         }
             \textbf{Linux Security Hardening}\end{twocolentry}
 

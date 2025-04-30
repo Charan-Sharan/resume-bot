@@ -65,4 +65,5 @@ jobs:
                 to: ${{ secrets.RECEIVER_MAIL_ADDRESS }}
                 from: ${{ secrets.MAIL_USERNAME }}
                 body: Build job of ${{github.repository}} completed successfully! 
+                html_body: "<h1>Resume Build Sucessfull</h1><h2>Time: ${{ github.event.head_commit.timestamp }}</h2><br>Access Resume <a href=${{secrets.RESUME_URL}}>Here</a>"
                 attachments: resume.pdf                
