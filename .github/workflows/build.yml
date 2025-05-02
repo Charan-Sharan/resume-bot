@@ -20,6 +20,7 @@ jobs:
                 packages: texlive texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra
                 version: 1.0
                 execute_install_scripts: true
+
             - name: install latex build dependencies
               run: | 
                 # sudo apt update
@@ -40,6 +41,7 @@ jobs:
                 git config --global user.email "github-actions@github.com"
                 git add resume.pdf
                 git commit -m "update resume"
+                echo '${{ toJson(github) }}' | jq .
                 git push origin HEAD:${{ github.event.workflow_run.head_branch }}
 
             - name: upload resume

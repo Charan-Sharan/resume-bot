@@ -16,8 +16,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install aspell
-        run: sudo apt-get update && sudo apt-get install -y aspell
+      - uses: awalsh128/cache-apt-pkgs-action@latest
+        with:
+          packages: aspell
+          version: 1.0
+          execute_install_scripts: true
 
       - name: Spell Check Resume
         run: |
