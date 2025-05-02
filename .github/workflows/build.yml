@@ -35,10 +35,8 @@ jobs:
                 git config --global user.name "github-actions"
                 git config --global user.email "github-actions@github.com"
                 git add resume.pdf
-                git commit -m "update resume"
-                git push origin HEAD:${{ github.head_ref }}
-              env: 
-                GIT_AUTH_TOKEN:  ${{ secrets.GITHUB_TOKEN }}
+                git commit -m "[github actions] update resume"
+                git push origin +HEAD:${{github.head_ref}}
 
             - name: upload resume
               env: 
