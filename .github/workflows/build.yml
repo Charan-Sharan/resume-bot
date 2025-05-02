@@ -37,8 +37,6 @@ jobs:
                 git add resume.pdf
                 git commit -m "update resume"
                 git push origin HEAD:${{ github.head_ref }}
-              env: 
-                GIT_AUTH_TOKEN:  ${{ secrets.GITHUB_TOKEN }}
 
             - name: upload resume
               env: 
