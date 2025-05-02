@@ -30,6 +30,16 @@ jobs:
                 echo "Building pdf....."
                 pdflatex resume.tex
 
+            - name: commit the new resume
+              run: | 
+                git config --global user.name "github-actions"
+                git config --global user.email "github-actions@github.com"
+                git add resume.pdf
+                git commit -m "update resume"
+                git push
+              env: 
+                GIT_AUTH_TOKEN:  ${{ secrets.GITHUB_TOKEN }}
+
             - name: upload resume
               env: 
                 AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
